@@ -1,0 +1,37 @@
+.container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    border-radius: 8px;
+    width: 58rem;
+}
+
+.countriesList {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.countryCard {
+    padding: 0.5rem;
+    border-bottom: 1px solid #DCDCDC;
+    background-color: white;
+}
+
+.countrySelected {
+    padding: 0.5rem;
+    border: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.countryName {
+    font-size: medium;
+    font-weight: bold;
+    color: #4F4F4F;
+}
