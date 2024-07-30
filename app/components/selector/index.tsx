@@ -6,7 +6,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 type CountryProps = {
     name: {
-        official: string;
+        common: string;
     },
     cca2: string
 }
@@ -22,8 +22,8 @@ const Selector = ({ handleParentSelect }: SelectedProps) => {
 
     const getCountriesFromAPI = async () => {
         try {
-            const countriesFromAPI = await getCountries();
-
+            const countriesFromAPI: CountryProps[] = await getCountries();
+            countriesFromAPI.sort((a, b) => a.name.common.localeCompare(b.name.common))
             setCountries(countriesFromAPI);
         } catch (error) {
             throw new Error(JSON.stringify(error));
@@ -47,10 +47,10 @@ const Selector = ({ handleParentSelect }: SelectedProps) => {
                     {countries.map((country) => (
                         <Button
                             key={country.cca2}
-                            onPress={() => handleSelect(country.name.official)}
+                            onPress={() => handleSelect(country.name.common)}
                             className={styles.countryCard}
                         >
-                            <p className={styles.countryName}>{country.name.official}</p>
+                            <p className={styles.countryName}>{country.name.common}</p>
                         </Button>
                     ))}
                 </div>

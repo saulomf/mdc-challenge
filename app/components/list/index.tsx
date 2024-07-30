@@ -1,6 +1,7 @@
 import { getUniversityByCountry } from "@/app/services/universities";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import Loading from "../Loading";
 
 type ListProps = {
     countrySelected: string;
@@ -17,12 +18,14 @@ type University = {
 
 const List = ({ countrySelected }: ListProps) => {
     const [universities, setUniversities] = useState<University[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const getUniversitiesFromAPI = useCallback(async () => {
         try {
             const universitiesFronAPI = await getUniversityByCountry(countrySelected);
 
             setUniversities(universitiesFronAPI);
+            setIsLoading(false);
         } catch (error) {
             throw new Error(JSON.stringify(error));
         }
@@ -30,6 +33,7 @@ const List = ({ countrySelected }: ListProps) => {
 
     useEffect(() => {
         if (countrySelected) {
+            setIsLoading(true);
             getUniversitiesFromAPI();
         }
     }, [countrySelected, getUniversitiesFromAPI]);
@@ -63,6 +67,10 @@ const List = ({ countrySelected }: ListProps) => {
             {HeaderText('Estado')}
         </div>
     );
+
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
         <div className={styles.container}>

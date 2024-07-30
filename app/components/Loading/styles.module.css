@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    color: #4F4F4F;
+    margin-left: 1rem;
+}
