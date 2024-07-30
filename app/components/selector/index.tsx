@@ -11,7 +11,11 @@ type CountryProps = {
     cca2: string
 }
 
-const Selector = () => {
+type SelectedProps = {
+    handleParentSelect: (name: string) => void;
+}
+
+const Selector = ({ handleParentSelect }: SelectedProps) => {
     const [countries, setCountries] = useState<CountryProps[]>();
     const [countrySelected, setCountrySelected] = useState<string>('');
     const [listOpened, setListOpened] = useState<boolean>(false);
@@ -33,6 +37,7 @@ const Selector = () => {
     const handleSelect = (name: string) => {
         setListOpened(false);
         setCountrySelected(name);
+        handleParentSelect(name);
     }
 
     return (

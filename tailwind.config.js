@@ -4,7 +4,7 @@ const {nextui} = require("@nextui-org/theme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./node_modules/@nextui-org/theme/dist/components/(button|table|ripple|spinner|checkbox|spacer).js"
+    "./node_modules/@nextui-org/theme/dist/components/(button|ripple|spinner).js"
 ],
   theme: {
     extend: {},

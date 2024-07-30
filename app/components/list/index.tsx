@@ -1,7 +1,6 @@
 import { getUniversityByCountry } from "@/app/services/universities";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
 
 type ListProps = {
     countrySelected: string;
@@ -13,7 +12,7 @@ type University = {
     country: string,
     domains: string[],
     name: string,
-    //state-province: string;
+    "state-province": string;
 }
 
 const List = ({ countrySelected }: ListProps) => {
@@ -35,29 +34,57 @@ const List = ({ countrySelected }: ListProps) => {
         }
     }, [countrySelected, getUniversitiesFromAPI]);
 
-    const CustomTableRow = (university: University) => (
-        <TableRow key={university.domains[0]}>
-            <TableCell></TableCell>
-        </TableRow>
-    )
+    const CellText = (text: string) => {
+        return (
+            <div className={styles.cell}>
+                <p className={styles.cellText}>{text}</p>
+            </div>
+        );
+    }
+
+    const HeaderText = (text: string) => {
+        return (
+            <div className={styles.cell}>
+                <p className={styles.HeaderText}>{text}</p>
+            </div>
+        );
+    }
+
+    const Header = () => (
+        <div className={styles.header}>
+            {HeaderText('Número')}
+            <div className={styles.divider} />
+            {HeaderText('Nome da instituição')}
+            <div className={styles.divider} />
+            {HeaderText('Site')}
+            <div className={styles.divider} />
+            {HeaderText('Domínio')}
+            <div className={styles.divider} />
+            {HeaderText('Estado')}
+        </div>
+    );
 
     return (
         <div className={styles.container}>
             {universities.length ? (
-                <Table>
-                    <TableHeader>
-                        <TableColumn>Número</TableColumn>
-                        <TableColumn>Nome da instituição</TableColumn>
-                        <TableColumn>Site</TableColumn>
-                        <TableColumn>Domínio</TableColumn>
-                        <TableColumn>Estado</TableColumn>
-                        {universities.map((university) => {
-                            <CustomTableRow university={university} />
-                        })}
-                    </TableHeader>
-                </Table>
+                <>
+                    <Header />
+                    {universities.map((university) => (
+                        <div key={university.alpha_two_code} className={styles.line}>
+                            {CellText(university.alpha_two_code)}
+                            <div className={styles.divider} />
+                            {CellText(university.name)}
+                            <div className={styles.divider} />
+                            {CellText(university.web_pages[0])}
+                            <div className={styles.divider} />
+                            {CellText(university.domains[0])}
+                            <div className={styles.divider} />
+                            {CellText(university['state-province'])}
+                        </div>
+                    ))}
+                </>
             ) :
-            <p>Nenhuma universidade encontrada</p>}
+            <p className={styles.notFound}>Nenhuma universidade encontrada...</p>}
         </div>
     );
 };

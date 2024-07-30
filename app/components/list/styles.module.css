@@ -4,5 +4,52 @@
     flex-direction: column;
     margin-top: 2rem;
     border-radius: 8px;
-    width: 58rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.notFound {
+    color: #4F4F4F;
+    font-size: large;
+}
+
+.cellText {
+    color: #4F4F4F;
+    font-size: small;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1px;
+}
+
+.HeaderText {
+    color: #4F4F4F;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #4F4F4F;
+}
+
+.cell {
+    width: 20%;
+    min-height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.divider {
+    height: 100%;
+    width: 1px;
+    background-color: #4F4F4F;
 }
