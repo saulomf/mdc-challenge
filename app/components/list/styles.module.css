@@ -53,3 +53,23 @@
     width: 1px;
     background-color: #4F4F4F;
 }
+
+.perPage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #4F4F4F;
+}
+
+.perPageText {
+    color: #4F4F4F;
+}
