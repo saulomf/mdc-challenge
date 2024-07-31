@@ -1,3 +1,5 @@
+This was a project made with the intention of ingressing on a project being developed by the UnB team.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
